@@ -10,7 +10,7 @@ sprite.o:	sprite.c common.h sprite.h
 
 sprite.c common.h sprite.h:
 
-paddle.o:	paddle.c common.h paddle.h
+paddle.o:	paddle.c common.h paddle.h sprite.h
 
-paddle.c common.h paddle.h:
+paddle.c common.h paddle.h sprite.h:
 

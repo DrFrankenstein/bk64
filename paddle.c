@@ -3,13 +3,11 @@
 
 #include "common.h"
 #include "paddle.h"
+#include "sprite.h"
 
 unsigned paddle_left(void)
 {
-  byte low = VIC.spr_pos[SPR_PADDLE].x;
-  byte high = VIC.spr_hi_x >> SPR_PADDLE & 1;
-  
-  return (unsigned)(high << 8) & low;
+  return sprite_posx(SPR_PADDLE);
 }
 
 unsigned paddle_right(void)
@@ -24,27 +22,17 @@ unsigned paddle_pos(void)
 
 void paddle_move(unsigned pos)
 {
-  byte high;
-  
-  pos -= 12;
-
-  VIC.spr_pos[SPR_PADDLE].x = (byte) pos;
-  high = pos >> 8;
-  
-  if (high)
-    VIC.spr_hi_x |= 1 << SPR_PADDLE;
-  else
-    VIC.spr_hi_x &= ~(1 << SPR_PADDLE);
+  sprite_movex(SPR_PADDLE, pos - 12);
 }
 
 void paddle_show(void)
 {
-  VIC.spr_color[SPR_PADDLE] = 1;
-  VIC.spr_pos[SPR_PADDLE].y = 200;
-  VIC.spr_ena |= 1 << SPR_PADDLE;
+  sprite_color(SPR_PADDLE, COLOR_WHITE);
+  sprite_movey(SPR_PADDLE, 230);
+  sprite_enable(SPR_PADDLE);
 }
 
 void paddle_hide(void)
 {
-  VIC.spr_ena &= ~(1 << SPR_PADDLE);
+  sprite_disable(SPR_PADDLE);
 }
