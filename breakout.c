@@ -1,4 +1,3 @@
-
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,12 +7,8 @@
 #include <cbm_petscii_charmap.h>
 
 #include "common.h"
-//#link "common.c"
 
 #include "paddle.h"
-//#link "paddle.c"
-
-//#link "sprite.c"
 
 void main(void)
 {
