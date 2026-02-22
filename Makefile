@@ -16,29 +16,15 @@ AR = c1541
 # the only supported target so far
 TARGET = c64
 
-DISK = breakout.d64
-
-PROGRAMS = breakout.prg
-
-breakout_HEADERS = \
- common.h \
- sprite.h \
- paddle.h
-
-breakout_SOURCES = \
- breakout.c \
- common.c \
- sprite.c \
- paddle.c
-
-breakout_OBJS = $(breakout_SOURCES:.c=.o)
-breakout_DEPS = $(breakout_SOURCES:.c=.dep)
+!include files.mak
 
 all: $(PROGRAMS)
 dist: $(DISK)
 
 .c.o:
 	$(CC) -t $(TARGET) -c $(CFLAGS) --create-dep $(<:.c=.dep) -o $@ $<
+
+!include deps.mak
 
 breakout.prg: $(breakout_OBJS)
 	$(LD) -t $(TARGET) $(LDFLAGS) -o $@ -m breakout.map $**
@@ -55,8 +41,6 @@ deps: $(breakout_DEPS)
 
 clean:
 	$(RM) $(breakout_OBJS) $(breakout_DEPS) $(PROGRAMS) $(DISK) breakout.map
-
-!include deps.mak
 
 .SUFFIXES:
 .SUFFIXES: .o .c
