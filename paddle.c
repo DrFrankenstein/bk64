@@ -29,6 +29,7 @@ void paddle_move(unsigned pos)
   pos -= 12;
 
   VIC.spr_pos[SPR_PADDLE].x = (byte) pos;
+  high = pos >> 8;
   
   if (high)
     VIC.spr_hi_x |= 1 << SPR_PADDLE;
