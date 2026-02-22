@@ -1,4 +1,6 @@
-# This makefile is for NMAKE (Visual Studio). If you're using GNU Make, see GNUMakefile.
+# This makefile is for NMAKE (Visual Studio) and Windows.
+# If you're saner than me and use GNU Make and *nix, feel free to provide and
+# maintain a GNUMakefile.
 
 CC = cl65
 CFLAGS = -O
