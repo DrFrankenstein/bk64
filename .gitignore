@@ -1,1 +1,7 @@
 .vscode
+
+*.o
+*.dep
+*.map
+*.prg
+*.d64
