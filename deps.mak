@@ -14,3 +14,7 @@ paddle.o:	paddle.c common.h paddle.h sprite.h
 
 paddle.c common.h paddle.h sprite.h:
 
+resources.o:	resources.s
+
+resources.s:
+

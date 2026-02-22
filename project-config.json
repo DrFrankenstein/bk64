@@ -6,7 +6,8 @@
         "breakout.c",
         "common.c",
         "paddle.c",
-        "sprite.c"
+        "sprite.c",
+        "resources.s"
     ],
     "build": "debug",
     "definitions": [],

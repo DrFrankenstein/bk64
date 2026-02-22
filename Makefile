@@ -2,6 +2,9 @@
 # If you're saner than me and use GNU Make and *nix, feel free to provide and
 # maintain a GNUMakefile.
 
+AS = cl65
+ASFLAGS = 
+
 CC = cl65
 CFLAGS = -O
 
@@ -24,6 +27,9 @@ dist: $(DISK)
 .c.o:
 	$(CC) -t $(TARGET) -c $(CFLAGS) --create-dep $(<:.c=.dep) -o $@ $<
 
+.s.o:
+	$(AS) -t $(TARGET) -c $(ASFLAGS) --create-dep $(<:.s=.dep) -o $@ $<
+
 !include deps.mak
 
 breakout.prg: $(breakout_OBJS)
@@ -45,5 +51,5 @@ clean:
 rebuild: clean all
 
 .SUFFIXES:
-.SUFFIXES: .o .c
+.SUFFIXES: .o .c .s
 .PHONY: all clean rebuild dist deps
