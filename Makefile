@@ -42,6 +42,8 @@ deps: $(breakout_DEPS)
 clean:
 	$(RM) $(breakout_OBJS) $(breakout_DEPS) $(PROGRAMS) $(DISK) breakout.map
 
+rebuild: clean all
+
 .SUFFIXES:
 .SUFFIXES: .o .c
-.PHONY: all clean dist deps
+.PHONY: all clean rebuild dist deps

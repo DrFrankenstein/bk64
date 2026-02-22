@@ -3,6 +3,7 @@ build
 
 *.o
 *.dep
+*.lst
 *.map
 *.prg
 *.d64
