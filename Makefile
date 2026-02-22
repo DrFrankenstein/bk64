@@ -31,13 +31,16 @@ breakout_SOURCES = \
  sprite.c \
  paddle.c
 
+breakout_OBJS = $(breakout_SOURCES:.c=.o)
+breakout_DEPS = $(breakout_SOURCES:.c=.dep)
+
 all: $(PROGRAMS)
 dist: $(DISK)
 
 .c.o:
 	$(CC) -t $(TARGET) -c $(CFLAGS) --create-dep $(<:.c=.dep) -o $@ $<
 
-breakout.prg: $(breakout_SOURCES:.c=.o)
+breakout.prg: $(breakout_OBJS)
 	$(LD) -t $(TARGET) $(LDFLAGS) -o $@ -m breakout.map $**
 
 $(DISK)::
@@ -47,11 +50,11 @@ $(DISK):: breakout.prg
 	$(AR) -attach $@ -write breakout.prg breakout,p
 
 # updates deps.mak from .dep files generated during build
-deps: $(breakout_SOURCES:.c=.dep)
+deps: $(breakout_DEPS)
 	$(CAT) $** > deps.mak
 
 clean:
-	$(RM) $(breakout_SOURCES:.c=.o) $(breakout_SOURCES:.c=.dep) $(PROGRAMS) $(DISK) breakout.map
+	$(RM) $(breakout_OBJS) $(breakout_DEPS) $(PROGRAMS) $(DISK) breakout.map
 
 !include deps.mak
 
