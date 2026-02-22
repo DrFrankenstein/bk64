@@ -11,7 +11,7 @@ LDFLAGS =
 CAT = type
 RM = del
 
-AR = c1541
+PKG = c1541
 
 # the only supported target so far
 TARGET = c64
@@ -30,10 +30,10 @@ breakout.prg: $(breakout_OBJS)
 	$(LD) -t $(TARGET) $(LDFLAGS) -o $@ -m breakout.map $**
 
 $(DISK)::
-	$(AR) -format "breakout,00" d64 $@
+	$(PKG) -format "breakout,00" d64 $@
 
 $(DISK):: breakout.prg
-	$(AR) -attach $@ -write breakout.prg breakout,p
+	$(PKG) -attach $@ -write breakout.prg breakout,p
 
 # updates deps.mak from .dep files generated during build
 deps: $(breakout_DEPS)
