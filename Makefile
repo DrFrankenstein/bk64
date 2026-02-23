@@ -3,10 +3,10 @@
 # maintain a GNUMakefile.
 
 AS = cl65
-ASFLAGS = 
+ASFLAGS = -g
 
 CC = cl65
-CFLAGS = -O
+CFLAGS = -O -g
 
 LD = cl65
 LDFLAGS = 
@@ -25,7 +25,7 @@ all: $(PROGRAMS)
 dist: $(DISK)
 
 .c.o:
-	$(CC) -t $(TARGET) -c $(CFLAGS) --create-dep $(<:.c=.dep) -o $@ $<
+	$(CC) -t $(TARGET) -c $(CFLAGS) -l $(<:.c=.lst) --add-source --create-dep $(<:.c=.dep) -o $@ $<
 
 .s.o:
 	$(AS) -t $(TARGET) -c $(ASFLAGS) --create-dep $(<:.s=.dep) -o $@ $<
@@ -46,7 +46,7 @@ deps: $(breakout_DEPS)
 	$(CAT) $** > deps.mak
 
 clean:
-	$(RM) $(breakout_OBJS) $(breakout_DEPS) $(PROGRAMS) $(DISK) breakout.map
+	$(RM) $(ARTIFACTS)
 
 rebuild: clean all
 
