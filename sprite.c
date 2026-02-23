@@ -1,7 +1,17 @@
 #include <c64.h>
+#include <string.h>
 
 #include "common.h"
 #include "sprite.h"
+
+/* 192nd sprite address from bank 0 = $0300 */
+/* it'll probably clobber BASIC state but we'll see */
+#define SPRITE_DATA_MIN_IDX 192
+
+static byte* get_sprite_table(void)
+{
+	return get_screen_memory() + 0x03F8;
+}
 
 void sprite_enable(byte spriteid)
 {
@@ -11,6 +21,19 @@ void sprite_enable(byte spriteid)
 void sprite_disable(byte spriteid)
 {
 	BIT_CLEAR(VIC.spr_ena, spriteid);
+}
+
+void sprite_set(byte spriteid, Sprite data)
+{
+	byte data_idx = SPRITE_DATA_MIN_IDX + spriteid;
+
+	/* we don't currently preload sprite shapes, but I don't think we'll have
+	   more than 8 for a while... */
+	/* we copy 1 extra byte but it's harmless; the VIC doesn't use it */
+	byte* dest = get_vic_bank_start() + data_idx * SPRITE_SIZE;
+	memcpy(dest, data, SPRITE_SIZE);
+	
+	get_sprite_table()[spriteid] = data_idx;
 }
 
 unsigned sprite_posx(byte spriteid)

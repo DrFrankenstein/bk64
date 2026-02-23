@@ -2,7 +2,7 @@
 ; since that's the mnemonic it uses
 .define BYTE .byte
 
-spr_paddle:
+_spr_paddle:
 ; Sprite #1
 ; Single color mode, BG color: 6, Sprite color: 1
 	BYTE $60, $00, $06
@@ -27,4 +27,4 @@ spr_paddle:
 	BYTE $00, $00, $00
 	BYTE $00, $00, $00
 
-.export spr_paddle
+.export _spr_paddle

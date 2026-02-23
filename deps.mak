@@ -10,9 +10,9 @@ sprite.o:	sprite.c common.h sprite.h
 
 sprite.c common.h sprite.h:
 
-paddle.o:	paddle.c common.h paddle.h sprite.h
+paddle.o:	paddle.c common.h paddle.h sprite.h resources.h
 
-paddle.c common.h paddle.h sprite.h:
+paddle.c common.h paddle.h sprite.h resources.h:
 
 resources.o:	resources.s
 

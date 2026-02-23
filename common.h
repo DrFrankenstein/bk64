@@ -107,10 +107,10 @@ void raster_wait(byte line);
 void wait_vblank();
 
 // get current VIC bank start address
-char* get_vic_bank_start();
+byte* get_vic_bank_start();
 
 // get current screen memory address
-char* get_screen_memory();
+byte* get_screen_memory();
 
 // read joystick fast
 #define READ_STICK(index) ~PEEK(0xdc01-(index))

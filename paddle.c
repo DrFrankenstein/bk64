@@ -4,6 +4,7 @@
 #include "common.h"
 #include "paddle.h"
 #include "sprite.h"
+#include "resources.h"
 
 #define PADDLE_WIDTH 24
 #define PADDLE_CENTER_OFF PADDLE_WIDTH / 24
@@ -33,6 +34,7 @@ void paddle_move(unsigned pos)
 
 void paddle_show(void)
 {
+  sprite_set(SPR_PADDLE, spr_paddle);
   sprite_color(SPR_PADDLE, COLOR_WHITE);
   sprite_movey(SPR_PADDLE, PADDLE_Y);
   sprite_enable(SPR_PADDLE);
