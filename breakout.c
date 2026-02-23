@@ -6,8 +6,10 @@
 
 #include "paddle.h"
 
-void main(void)
+int main(void)
 {
   paddle_move(160);
   paddle_show();
+
+  return EXIT_SUCCESS;
 }
