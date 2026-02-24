@@ -33,7 +33,7 @@ dist: $(DISK)
 !include deps.mak
 
 breakout.prg: $(breakout_OBJS)
-	$(LD) -t $(TARGET) $(LDFLAGS) -o $@ -m breakout.map $**
+	$(LD) -t $(TARGET) $(LDFLAGS) -o $@ -m breakout.map -Ln breakout.lbl $**
 
 $(DISK)::
 	$(PKG) -format "breakout,00" d64 $@
