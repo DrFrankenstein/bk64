@@ -7,7 +7,7 @@
 #include "resources.h"
 
 #define PADDLE_WIDTH 24
-#define PADDLE_CENTER_OFF PADDLE_WIDTH / 24
+#define PADDLE_CENTER_OFF (PADDLE_WIDTH / 2)
 #define PADDLE_HEIGHT 5
 
 #define PADDLE_Y 230
@@ -27,9 +27,15 @@ unsigned paddle_pos(void)
   return paddle_left() + PADDLE_CENTER_OFF;
 }
 
-void paddle_move(unsigned pos)
+void paddle_moveto(unsigned pos)
 {
   sprite_movex(SPR_PADDLE, pos - PADDLE_CENTER_OFF);
+}
+
+void paddle_moveby(int dx)
+{
+  unsigned pos = paddle_pos();
+  paddle_moveto(pos + dx);
 }
 
 void paddle_show(void)

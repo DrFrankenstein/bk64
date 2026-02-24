@@ -11,7 +11,8 @@ unsigned paddle_left(void);
 unsigned paddle_right(void);
 
 unsigned paddle_pos(void);
-void paddle_move(unsigned pos);
+void paddle_moveto(unsigned pos);
+void paddle_moveby(int dx);
 
 void paddle_show(void);
 void paddle_hide(void);

@@ -144,6 +144,6 @@ void set_raster_irq(char scanline);
 #define BIT_GET(src, bit) ((src) >> (bit) & 1)
 #define BIT_SET(dest, bit) ((dest) |= 1 << (bit))
 #define BIT_CLEAR(dest, bit) ((dest) &= ~(1 << (bit)))
-#define MKINT(high, low) ((unsigned)((high) << 8) & low)
+#define MKINT(high, low) ((unsigned)(high) << 8 | (low))
 
 #endif

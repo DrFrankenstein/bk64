@@ -6,7 +6,7 @@
 
 /* 192nd sprite address from bank 0 = $0300 */
 /* it'll probably clobber BASIC state but we'll see */
-#define SPRITE_DATA_MIN_IDX 192
+#define SPRITE_DATA_IDX_BASE 192
 
 static byte* get_sprite_table(void)
 {
@@ -25,7 +25,7 @@ void sprite_disable(byte spriteid)
 
 void sprite_set(byte spriteid, Sprite data)
 {
-	byte data_idx = SPRITE_DATA_MIN_IDX + spriteid;
+	byte data_idx = SPRITE_DATA_IDX_BASE + spriteid;
 
 	/* we don't currently preload sprite shapes, but I don't think we'll have
 	   more than 8 for a while... */
