@@ -1,5 +1,7 @@
 #ifndef SPRITE_H_INCLUDED
 
+#include "common.h"
+
 #define SPRITE_SIZE (64)	/* 21 lines of 24 pixels (3 bytes) each = 63 bytes, + 1 padding byte */
 typedef byte Sprite[SPRITE_SIZE];
 

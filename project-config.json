@@ -5,6 +5,7 @@
     "sources": [
         "breakout.c",
         "common.c",
+        "util.c",
         "paddle.c",
         "sprite.c",
         "resources.s"

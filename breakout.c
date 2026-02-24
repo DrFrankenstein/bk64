@@ -4,6 +4,7 @@
 #include <joystick.h>
 
 #include "common.h"
+#include "util.h"
 
 #include "paddle.h"
 
@@ -21,9 +22,9 @@ int main(void)
   {
     byte joystatus = joy_read(0);
     if (JOY_LEFT(joystatus))
-      paddle_moveby(-1);
+      paddle_moveby(-2);
     else if (JOY_RIGHT(joystatus))
-      paddle_moveby(1);
+      paddle_moveby(2);
     else if (JOY_BTN_1(joystatus))
       break;  /* for now */
 

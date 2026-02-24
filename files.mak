@@ -4,6 +4,7 @@ PROGRAMS = breakout.prg
 
 breakout_HEADERS = \
  common.h \
+ util.h \
  sprite.h \
  paddle.h \
  resources.h
@@ -11,6 +12,7 @@ breakout_HEADERS = \
 breakout_SOURCES = \
  breakout.c \
  common.c \
+ util.c \
  sprite.c \
  paddle.c
 

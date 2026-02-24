@@ -2,6 +2,7 @@
 #include <string.h>
 
 #include "common.h"
+#include "util.h"
 #include "sprite.h"
 
 /* 192nd sprite address from bank 0 = $0300 */

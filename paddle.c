@@ -1,7 +1,7 @@
 #include <c64.h>
 #include <cbm_petscii_charmap.h>
 
-#include "common.h"
+#include "util.h"
 #include "paddle.h"
 #include "sprite.h"
 #include "resources.h"
@@ -12,30 +12,37 @@
 
 #define PADDLE_Y 230
 
-unsigned paddle_left(void)
+int paddle_left(void)
+{
+  return paddle_right() - PADDLE_WIDTH;
+}
+
+int paddle_right(void)
 {
   return sprite_posx(SPR_PADDLE);
 }
 
-unsigned paddle_right(void)
+int paddle_pos(void)
 {
-  return paddle_left() + PADDLE_WIDTH;
+  return paddle_right() - PADDLE_CENTER_OFF;
 }
 
-unsigned paddle_pos(void)
+static void paddle_moveabs(int pos)
 {
-  return paddle_left() + PADDLE_CENTER_OFF;
+  sprite_movex(SPR_PADDLE, pos);
 }
 
-void paddle_moveto(unsigned pos)
+void paddle_moveto(int pos)
 {
-  sprite_movex(SPR_PADDLE, pos - PADDLE_CENTER_OFF);
+  paddle_moveabs(pos + PADDLE_CENTER_OFF);
 }
 
 void paddle_moveby(int dx)
 {
-  unsigned pos = paddle_pos();
-  paddle_moveto(pos + dx);
+  int pos = paddle_right();
+  int newpos = clamp(pos + dx, 0 + PADDLE_WIDTH, 320);
+
+  paddle_moveabs(newpos);
 }
 
 void paddle_show(void)
