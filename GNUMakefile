@@ -1,5 +1,8 @@
-# This makefile is for NMAKE (Visual Studio) and Windows.
-# If you're saner than me and use GNU Make and *nix (or MinGW), see GNUMakefile.
+# This is a port of the main Makefile, adapted to GNU Make for those who are
+# saner than me and aren't using Microsoft's toolchain. If you are, though,
+# check out `Makefile`.
+# This GNUMakefile might be less maintained and tested. Feel free to PR your
+# fixes if you run into issues.
 
 AS = cl65
 ASFLAGS = -g
@@ -10,15 +13,15 @@ CFLAGS = -O -g
 LD = cl65
 LDFLAGS = 
 
-CAT = type
-RM = del
+CAT = cat
+RM = rm
 
 PKG = c1541
 
 # the only supported target so far
 TARGET = c64
 
-!include files.mak
+include files.mak
 
 all: $(PROGRAMS)
 dist: $(DISK)
@@ -29,10 +32,10 @@ dist: $(DISK)
 .s.o:
 	$(AS) -t $(TARGET) -c $(ASFLAGS) --create-dep $(<:.s=.dep) -o $@ $<
 
-!include deps.mak
+include deps.mak
 
 breakout.prg: $(breakout_OBJS)
-	$(LD) -t $(TARGET) $(LDFLAGS) -m breakout.map -Ln breakout.lbl -o $@ $**
+	$(LD) -t $(TARGET) $(LDFLAGS) -m breakout.map -Ln breakout.lbl -o $@ $^
 
 $(DISK)::
 	$(PKG) -format "breakout,00" d64 $@
@@ -42,7 +45,7 @@ $(DISK):: breakout.prg
 
 # updates deps.mak from .dep files generated during build
 deps: $(breakout_DEPS)
-	$(CAT) $** > deps.mak
+	$(CAT) $^ > deps.mak
 
 clean:
 	$(RM) $(ARTIFACTS)
