@@ -1,6 +1,6 @@
-breakout.o:	breakout.c common.h util.h paddle.h
+breakout.o:	breakout.c common.h util.h paddle.h ball.h
 
-breakout.c common.h util.h paddle.h:
+breakout.c common.h util.h paddle.h ball.h:
 
 common.o:	common.c common.h
 
@@ -17,6 +17,10 @@ sprite.c common.h util.h sprite.h:
 paddle.o:	paddle.c util.h paddle.h sprite.h common.h resources.h
 
 paddle.c util.h paddle.h sprite.h common.h resources.h:
+
+ball.o:	ball.c ball.h sprite.h common.h
+
+ball.c ball.h sprite.h common.h:
 
 resources.o:	resources.s
 

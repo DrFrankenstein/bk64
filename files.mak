@@ -7,6 +7,7 @@ breakout_HEADERS = \
  util.h \
  sprite.h \
  paddle.h \
+ ball.h \
  resources.h
 
 breakout_SOURCES = \
@@ -14,7 +15,8 @@ breakout_SOURCES = \
  common.c \
  util.c \
  sprite.c \
- paddle.c
+ paddle.c \
+ ball.c
 
 breakout_ASM = \
  resources.s

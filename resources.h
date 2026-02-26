@@ -4,6 +4,7 @@
 #include "sprite.h"
 
 extern Sprite spr_paddle;
+extern Sprite spr_ball;
 
 #define RESOURCES_H_INCLUDED
 #endif

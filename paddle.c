@@ -19,7 +19,7 @@ int paddle_left(void)
 
 int paddle_right(void)
 {
-  return sprite_posx(SPR_PADDLE);
+  return sprite_posx(SPR_ID_PADDLE);
 }
 
 int paddle_pos(void)
@@ -29,7 +29,7 @@ int paddle_pos(void)
 
 static void paddle_moveabs(int pos)
 {
-  sprite_movex(SPR_PADDLE, pos);
+  sprite_movex(SPR_ID_PADDLE, pos);
 }
 
 void paddle_moveto(int pos)
@@ -47,13 +47,13 @@ void paddle_moveby(int dx)
 
 void paddle_show(void)
 {
-  sprite_set(SPR_PADDLE, spr_paddle);
-  sprite_color(SPR_PADDLE, COLOR_WHITE);
-  sprite_movey(SPR_PADDLE, PADDLE_Y);
-  sprite_enable(SPR_PADDLE);
+  sprite_set(SPR_ID_PADDLE, spr_paddle);
+  sprite_color(SPR_ID_PADDLE, COLOR_WHITE);
+  sprite_movey(SPR_ID_PADDLE, PADDLE_Y);
+  sprite_enable(SPR_ID_PADDLE);
 }
 
 void paddle_hide(void)
 {
-  sprite_disable(SPR_PADDLE);
+  sprite_disable(SPR_ID_PADDLE);
 }

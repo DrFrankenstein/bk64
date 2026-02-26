@@ -2,7 +2,7 @@
 
 #include <c64.h>
 
-#define SPR_PADDLE 0
+#define SPR_ID_PADDLE 0
 
 int paddle_left(void);
 int paddle_right(void);

@@ -27,4 +27,30 @@ _spr_paddle:
 	BYTE $00, $00, $00
 	BYTE $00, $00, $00
 
+_spr_ball:
+; Sprite #2
+; Single color mode, BG color: 6, Sprite color: 1
+	BYTE $00, $00, $06
+	BYTE $00, $00, $0F
+	BYTE $00, $00, $0F
+	BYTE $00, $00, $06
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+	BYTE $00, $00, $00
+
 .export _spr_paddle
+.export _spr_ball
